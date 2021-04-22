@@ -19,7 +19,8 @@ from first_app.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('first_app/', include('first_app.urls')),
+    path('first/', include('first_app.urls')),
     path('', home, name='home'),
+    path('blog/',  include('blog.urls'))
 
 ]
