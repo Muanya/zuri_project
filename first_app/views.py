@@ -7,4 +7,5 @@ def home(req):
 	return render(req,'index.html', {'title': 'Home'})
 
 def index(req):
-	return HttpResponse('Hello World! You are first_app index.')
+	contxt = {'title': 'First app'}
+	return render(req, 'first_app/index.html', contxt)
