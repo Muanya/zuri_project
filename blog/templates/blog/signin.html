@@ -1,0 +1,49 @@
+{%extends 'base.html' %}
+
+
+{%block content%}
+<style>
+	body {
+        font-family: "Roboto", sans-serif;
+        font-size: 15px;
+        background: #E3E7EB
+    }
+
+	.card {
+		
+		width: 35%;
+		margin-left: 300px;
+		box-shadow: 0 16px 48px #E3E7EB;
+	}
+
+	.shift {
+		margin-left: 70px;
+		margin-top: 20px;
+	}
+	
+</style>
+
+<h2>SIGN IN</h2>
+<form method="post" action="{%url 'blog_signin'%}">
+	{% csrf_token %}
+<div class="col-md-8 shift">
+	{%for field in form%}
+		<p>
+			{{ field.label_tag }}
+			{{ field }}
+			{% for error in field.errors %}
+				<p style="color: red">{{ errror }}</p>
+			{% endfor %}
+		</p>
+	{%endfor%}
+
+	{{form.errors}}
+</div>
+
+	<button type="submit"> Sign in </button>
+
+
+</form>
+
+
+{%endblock%}

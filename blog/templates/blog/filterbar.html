@@ -1,0 +1,22 @@
+{% block sidebar %}
+
+<style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+       
+</style>
+
+<!-- Sidebar Widgets Column -->
+<div class="col-md-4 float-right ">
+<div class="card my-4">
+        <h5 class="card-header">FILTER</h5>
+    <div class="card-body">
+        <p class="card-text"> <a href="{% url 'blog_admin_index' 'All' %}">All</a></p>
+        <p class="card-text"> <a href="{% url 'blog_admin_index' 'Draft' %}">Draft</a></p>
+        <p class="card-text"> <a href="{% url 'blog_admin_index' 'Published' %}">Published</a></p>
+    </div>
+</div>
+</div>
+
+{% endblock sidebar %}

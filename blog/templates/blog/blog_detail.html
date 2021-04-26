@@ -1,0 +1,62 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+        <p class=" text-muted">{{ post.author }} | {{ post.date_created }}</p>
+        <p class="card-text ">{{ post.body | safe }}</p>
+      </div>
+    </div>
+    {% block sidebar %} {% include 'blog/sidebar.html' %} {% endblock sidebar %}
+  </div>
+
+
+
+
+    <!-- Comment Section -->
+    <div class="row">
+        <div class="col-md-8 mt-3 left">
+            <h5 class="card-title">COMMENTS:</h5>
+            {%if comments %}
+            {% for comment in comments %}
+                <div>
+                        <p>{{comment.body | safe}}</p>
+                   
+                </div>
+                <p class="text-muted h6">{{ comment.author }} | {{ comment.date_created}} </p>
+                <br><br>
+            {% endfor %}
+            {%else%}
+                No comment yet!
+            {%endif%}
+
+        </div>
+
+        
+    </div>
+
+
+    {%if user.is_authenticated %}
+<form class="form" method="post" action="{%url 'blog_detail' post.slug%}">
+    {% csrf_token %}
+    
+
+    {%for field in form%}
+    <div class="col-md-8 shift">
+        <p>
+            {{ field }}
+        </p>
+    </div>
+
+    <button class="btn btn-primary" type="submit">Add Comment </button>
+</form>
+{% endfor %}
+{%else%}
+<div class="card-text">
+    Sign In to add your comments
+</div>
+{% endif %}
+</div>
+
+{% endblock content %}
