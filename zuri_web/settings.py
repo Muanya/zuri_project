@@ -25,7 +25,7 @@ SECRET_KEY = '#3qbhb7c-_ojz-y8c@ad@3k@+sh$@q#j7mp%em-+@**!&+mo!p'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['p3-blog-app.herokuapp.com']
 
 
 # Application definition
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+	'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
