@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import AuthenticationForm 
+from django.contrib.auth.models import User
 from django.utils import timezone
 from django.http import Http404
 from .forms import RegistrationForm, PostForm, CommentForm
@@ -133,4 +134,18 @@ def delete_blog(req, slug):
 	queryset.delete()
 	return redirect('blog_admin_index', filter='All')
 
+def password_change(req):
+	if not req.user.is_authenticated:
+		return redirect('blog_index')
+
+	msg = ''
+
+	if req.user.is_authenticated and req.method=='POST':
+		password = req.POST['new_password']
+		user = get_object_or_404(User, username=req.user.username)
+		user.set_password(password)
+		user.save()
+		msg = "Password Changed Successfully"
+
+	return render(req, 'blog/reset_password.html', {'message': msg})
 

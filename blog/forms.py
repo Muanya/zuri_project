@@ -10,7 +10,7 @@ class RegistrationForm(UserCreationForm):
 	middle_name = forms.CharField(max_length=30, widget = forms.TextInput(attrs={'class': 'form-control'}))
 	email = forms.EmailField(max_length=254, widget = forms.TextInput(attrs={'class': 'form-control'}))
 	gender=forms.ChoiceField(choices=[('M','Male'),('F','Female')])
-	birth_date = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control'}), help_text='Required. Format: YYYY-MM-DD', )
+	birth_date = forms.DateField(widget=forms.DateInput(attrs={'class': 'form-control', 'placeholder': 'YYYY-MM-DD'}), help_text='Required. Format: YYYY-MM-DD', )
 
 	class Meta:
 		model = User 

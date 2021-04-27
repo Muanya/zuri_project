@@ -11,5 +11,6 @@ urlpatterns = [
 	path('admin/<str:filter>/', views.blog_admin_index, name='blog_admin_index'),
 	path('admin/modify/<slug:slug>', views.update_blog, name='update_blog'),
 	path('admin/delete/<slug:slug>', views.delete_blog, name='delete_blog'),
+	path('admin/change_password', views.password_change, name='password_change'),
 
 ]
