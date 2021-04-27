@@ -24,9 +24,20 @@
 </style>
 
 	{% if user.is_authenticated %}
-		<p>
-			Welcome <b>{{user.username}}</b> to the Blog Admin!
-		</p>
+
+	<header style="background: rgb(51,155,158)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h3 class="site-heading my-4 mt-3 text-white">Welcome {{user.username}} </h3>
+                    <p class="text-light"> Edit your post here! &nbsp;
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
 
 
@@ -54,6 +65,8 @@
 		 <button onclick="beforePublish(); ">Publish Update</button>
 
 		 	<button onclick="delete_post(); "> Delete </button> 
+		 		</div>
+	</div>
 	
 
 

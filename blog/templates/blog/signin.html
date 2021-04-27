@@ -23,7 +23,23 @@
 	
 </style>
 
-<h2>SIGN IN</h2>
+<header style="background: rgb(51,155,158)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h3 class="site-heading my-4 mt-3 text-white">Welcome </h3>
+                    <p class="text-light"> Sign In to Continue  &nbsp;
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<legend><center>SIGN IN</center></legend>
+<div class="card">
+	<div class="form-group">
 <form method="post" action="{%url 'blog_signin'%}">
 	{% csrf_token %}
 <div class="col-md-8 shift">
@@ -40,10 +56,17 @@
 	{{form.errors}}
 </div>
 
-	<button type="submit"> Sign in </button>
+	<button class="btn btn-primary" type="submit"> Sign in </button>
+
 
 
 </form>
+</div>
+
+<div>
+	<p>Do not have an account? <a href="{%url 'blog_signup'%}">Sign up!</a></p>
+	</div>
+</div>
 
 
 {%endblock%}

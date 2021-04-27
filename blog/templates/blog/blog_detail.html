@@ -1,12 +1,29 @@
 {% extends 'base.html' %} {% block content %}
 
+<header style="background: rgb(51,155,158)">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h3 class="site-heading my-4 mt-3 text-white">Welcome {{user.username}} </h3>
+                    <p class="text-light"> Edit your post here! &nbsp;
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
 <div class="container">
   <div class="row">
     <div class="col-md-8 card mb-4  mt-3 left  top">
       <div class="card-body">
-        <p class=" text-muted">{{ post.author }} | {{ post.date_created }}</p>
+
         <p class="card-text ">{{ post.body | safe }}</p>
       </div>
+      <p class=" text-muted"> By: {{ post.author }} | {{ post.date_created }}</p>
+        <br>
     </div>
     {% block sidebar %} {% include 'blog/sidebar.html' %} {% endblock sidebar %}
   </div>
@@ -54,7 +71,7 @@
 {% endfor %}
 {%else%}
 <div class="card-text">
-    Sign In to add your comments
+   Please <a href="{%url 'blog_signin' %}"> Sign In </a> to add your comments
 </div>
 {% endif %}
 </div>

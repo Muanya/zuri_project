@@ -1,9 +1,32 @@
 {%extends 'base.html' %}
+ {% load static %}
 
-{%block content %}
+  {% block content %}
 
-<p>
-	Welcome to the Index of this django app!
-</p>
+
+    <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner header-text" id="top">
+        <div class="Modern-Slider">
+          <!-- Item -->
+          <div class="item">
+            <div class="img-fill">
+                <img src="{%static 'images/slide-01.jpg' %}" alt="">
+                <div class="text-content">
+                  <h3>Welcome To P#</h3>
+                  <h5>Find Interesting Articles</h5>
+                  {% if user.is_authenticated %}
+                  <a class="main-stroked-button" href="{%url 'create_post' %}">Create Article</a>
+                  <a class="main-filled-button" href="{%url 'blog_admin_index' 'All' %}">Edit Article</a>
+                  {% else %}
+                  <a class="main-stroked-button" href="{%url 'blog_signup' %}">Sign Up</a>
+                  <a class="main-filled-button" href="{%url 'blog_signin' %}">Log In</a>
+                   {% endif %}
+                </div>
+            </div>
+          </div>
+      </div>
+          <!-- // Item -->
+      </div>
+         
 
 {%endblock%}

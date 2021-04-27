@@ -17,6 +17,9 @@ def index(req):
 
 
 def blog_admin_index(req, filter):
+	if not req.user.is_authenticated:
+		return redirect('blog_index')
+
 	if filter == 'All':
 		queryset = Post.objects.filter(author=req.user).order_by('-date_created')
 	elif filter == 'Draft':
@@ -49,7 +52,7 @@ def signin(req):
 
 def signup(req):
 	if req.user.is_authenticated:
-		return redirect('blog_index')
+		return redirect('blog_admin_index', filter='All')
 	if req.method == 'POST':
 		form = RegistrationForm(req.POST)
 		if form.is_valid():

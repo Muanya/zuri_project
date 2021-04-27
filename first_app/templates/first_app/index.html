@@ -1,8 +1,27 @@
 {%extends 'base.html' %}
+ {% load static %}
+
 
 {%block content%}
-<p>
-Welcome to First app index!
-</p>
+ <!-- ***** Main Banner Area Start ***** -->
+    <div class="main-banner header-text" id="top">
+        <div class="Modern-Slider">
+          <!-- Item -->
+          <div class="item">
+            <div class="img-fill">
+                <img src="{%static 'images/slide-02.jpg' %}" alt="">
+                <div class="text-content">
+                  <h3>Welcome To First app of P#</h3>
+                  <h5>Find Interesting Articles First </h5>
+                
+                  <a class="main-stroked-button" href="">Sign Up</a>
+                  <a class="main-filled-button" href="">Log In</a>
+                  
+                </div>
+            </div>
+          </div>
+      </div>
+          <!-- // Item -->
+      </div>
 {%endblock%}
 
