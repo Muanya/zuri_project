@@ -18,11 +18,11 @@ def index(req):
 
 def blog_admin_index(req, filter):
 	if filter == 'All':
-		queryset = Post.objects.all().order_by('-date_created')
+		queryset = Post.objects.filter(author=req.user).order_by('-date_created')
 	elif filter == 'Draft':
-		queryset = Post.objects.filter(status=0).order_by('-date_created')
+		queryset = Post.objects.filter(status=0, author=req.user).order_by('-date_created')
 	elif filter =='Published':
-		queryset = Post.objects.filter(status=1).order_by('-date_created')
+		queryset = Post.objects.filter(status=1, author=req.user).order_by('-date_created')
 	else:
 		raise Http404('Path does not exist')
 
